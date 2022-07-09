@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script> 
+    </head>
+    <body>
+        <form onsubmit="return false">
+            <input type="text" id="cls" placeholder="class name"><br>
+            <textarea id="html-in" placeholer="paste html here"></textarea><br>
+            <input pys-onClick="sub" type="submit" id="sub" value="submit">
+        </form><br>
+        <div>
+            <p id="output"></p>
+        </div>
+
+
+        <py-script>
+            from bs4 import BeautifulSoup
+
+            def sub(*args, **kwargs):
+                soup = BeautifulSoup(Element("html-in").value)
+                lss = soup.find_all("div", class_= Element("cls").value)
+                out = []
+                for el in lss:
+                    out.append(el.text)
+                pyscript.write("output",";".join(out))
+        </py-script>
+        <py-env>
+            - beautifulsoup4
+        </py-env>
+    </body>
+</html>
