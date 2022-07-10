@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Sora&display=swap');
+
+html, body {
+    min-height: 100%;
+}
+
+html *
+{
+   font-size: 1em;
+   font-family: 'Sora', sans-serif;
+   color:rgb(255, 238, 0);
+}
+
+.first {
+    padding-top: 3em;
+}
+
+body {
+    
+    background: #1d4350;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1em;
+}
+
+h2 {
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 2em;
+}
+
+p, li {
+    margin:1em;
+}
+
+p.long {
+    text-align: justify;
+}
+
+.nav {
+    background-color: rgb(255, 238, 0);
+    overflow: clip;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    max-height: 3em;
+    border-bottom: thin solid #363636;
+}
+  
+.nav a {
+    float: left;
+    color: #1f1f1f;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Lobster', cursive; 
+}
+
+.nav a:hover {
+    background-color: rgb(219, 205, 0);
+    color: black;
+}
+
+.nav a.active {
+    background-color: black;
+    color: rgb(255, 251, 0);
+}
+
+#table {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
+    gap: 1rem;
+}
+
+.inv {
+    visibility: hidden;
+    position: absolute;
+    top: -9999px;
+}
+
+.inv * {
+    visibility: hidden;
+    position: absolute;
+    top: -9999px;
+}
+
+#sub {
+    background-color: rgb(255, 238, 0);
+    color: black;
+    margin: 2em;
+    border: thin solid black;
+    border-radius: 5pt;
+    width: 50%;
+    height: 20pt;
+}
+
+#x, #y {
+    background-color: #255869;
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.form div * {
+    width: 450px;
+}

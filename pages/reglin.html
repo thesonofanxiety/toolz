@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="https://pyscript.net/alpha/pyscript.css"/>
+        <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+        
+    </head>
+<body>
+    <div class="nav">
+        <a href="/index.html">Strona główna</a>
+        <a href="">Informacje</a>
+        <a href="">O autorach</a>
+    </div>
+    <div>
+        <h1> Kalkulator regresji. </h1>
+        <form onsubmit="return false" class="form">
+                <div>
+                    <label>Wartości x:</label><br>
+                    <textarea id="x" cols="40" rows="5"></textarea>
+                </div>
+                <div>
+                    <label>Wartości y:</label><br>
+                    <textarea id="y" cols="40" rows="5"></textarea>
+                </div>
+                <input pys-onClick="sub" type="submit" id="sub" value="submit"></br>
+        </form>
+        <div id="wyniki" class="inv">
+            <p>Dane x:</p>
+            <p id="dane_x"></p>
+            <p>Dane y:</p>
+            <p id="dane_y"></p>
+            <p>y = a*x+b</p>
+            <p id="a"></p>
+            <p id="b"></p>
+            <p id="se"></p>
+            <p id="sa2"></p>
+            <p id="sb2"></p>
+            <p id="sa"></p>
+            <p id="sb"></p>
+            <p id="ua"></p>
+            <p id="ub"></p>
+            <p>Wykres:</p>
+            <div id="Wykres"></div>
+        </div>
+    </div>
+    <py-script>
+        import numpy as np
+        from matplotlib import pyplot as plt
+
+        def read(x,y):
+            x = x.split('\n')
+            y = y.split('\n')
+            return ([float(xi) for xi in x], [float(yi) for yi in y])
+
+        def mean(arg):
+            return sum(arg)/len(arg)
+
+        def var(arg):
+            return sum(arg-mean(arg))
+
+        def covar(x, y):
+            return sum((x-mean(x))(y-mean(y)))
+
+        def a(x, y):
+            n = len(x)
+            return ((n*sum(x*y)-sum(x)*sum(y))/(n*sum(x**2)-sum(x)**2))
+
+        def b(x, y, a):
+            return mean(y)-a*mean(x)
+
+        def e(x,y,a,b):
+            return y-(a*x+b)
+
+        def se(x,y,a,b):
+            n = len(x)
+            return (n*sum(y**2)-sum(y)**2-a**2*(n*sum(x**2)-sum(x)**2))/(n*(n-2))
+
+        def sa(x,y,se):
+            n = len(x)
+            return (n*se)/(n*sum(x**2)-sum(x)**2)
+
+        def sb(x,y,sa):
+            n = len(x)
+            return sa*(1/n)*sum(x**2)
+
+
+        def sub(*args, **kwargs):
+            x, y = read(Element("x").value, Element("y").value)
+            #x = [24.2 , 25.9 , 30.4 , 31.9 , 35.7 , 41.4 , 46.1 , 51.6 , 55.3 , 60.9 , 65 , 70 , 75 , 81.1 , 85.6 , 90.9 , 95.4 , 100.1 , 105 ]
+            #y = [108.9 , 109.6 , 111.3 , 112.1 , 113.3 , 115.5 , 117.3 , 119.4 , 121.4 , 123 , 125.2 , 127.1 , 129 , 130.7 , 132.1 , 134.3 , 136.6 , 138.3 , 140.3]
+            x = np.array(x)
+            y = np.array(y)
+            print("o----------o")
+            print("| Regresja |")
+            print("o----------o")
+            print("Dane x:")
+            Element("dane_x").write(str(x))
+            print("Dane y:")
+            Element("dane_y").write(str(y))
+            a1=a(x,y)
+            b1=b(x,y,a1)
+            Element("a").write("a = "+str(a1))
+            Element("b").write("b = "+str(b1))
+            se1 = se(x,y,a1,b1)
+            sa1 = sa(x,y,se1)
+            sb1 = sb(x,y,sa1)
+            ua = 2*np.sqrt(sa1)
+            ub = 2*np.sqrt(sb1)
+            Element("se").write("(SƐ)^2 = "+str(se1))
+            Element("sa2").write("(Sa)^2 = "+str(sa1))
+            Element("sb2").write("(Sb)^2 = "+str(sb1))
+            Element("sa").write("Sa = "+str(np.sqrt(sa1)))
+            Element("sa").write("Sb = "+str(np.sqrt(sb1)))
+            Element("ua").write("U(a) = "+str(ua))
+            Element("ub").write("U(b) = "+str(ub))
+            fig = plt.figure(figsize=(20,10),dpi=120)
+            ax = plt.gca()
+            ax.plot(x,y,'bo', markersize=2,label=r'$\left(t_i,\ R_{m_i}\right)$')
+            ax.plot(x, a1*x+b1, 'r--', linewidth=1,label=r'$a\cdot t + b$')
+            ax.plot(x, (a1-ua)*x+(b1-ub), 'm--',linewidth=1,label=r'$(a\pm U(a))\cdot t + b\pm U(b)$')
+            ax.plot(x, (a1+ua)*x+(b1+ub), 'm--',linewidth=1)
+            plt.xlabel(r'$t$')
+            plt.ylabel(r'$R_m$')
+            ax.grid(visible=True, which='both', axis='both')
+            ax.legend()
+            pyscript.write("Wykres",fig)
+            Element("wyniki").remove_class("inv")
+    </py-script>
+    <py-env>
+        - matplotlib
+        - numpy
+    </py-env>
+</body>
+</html>
