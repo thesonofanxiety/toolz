@@ -22,6 +22,11 @@ body {
     margin: 0;
 }
 
+input, textarea {
+    padding: 5pt;
+    margin: 10pt;
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 1em;
 }
@@ -96,22 +101,32 @@ p.long {
     margin: 2em;
     border: thin solid black;
     border-radius: 5pt;
-    width: 50%;
-    height: 20pt;
+    width: 100%;
+    height: 24pt;
+    text-align: center;
+    line-height: 3pt;
 }
 
-#x, #y {
+#x, #y, #html-in, #cls {
     background-color: #255869;
+}
+
+.app_container {
+    margin: 10pt;
 }
 
 .form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: stretch;
+    width: 75%;
+    margin: auto;
+    border: thin solid rgb(255, 238, 0);
+    border-radius: 15pt;
 }
 
-.form div * {
-    width: 450px;
+.form * {
+    padding: 15pt;
 }
