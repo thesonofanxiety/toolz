@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Sora&display=swap');
 
+:root {
+    --color-bg: #1d4350;
+    --color-main: rgb(255, 238, 0);
+    --color-main-dimmed: rgb(219, 205, 0);
+    --color-bg-sec: #363636;
+    --color-text-sec: black;
+    --color-input-bg: #255869;
+    --h-navbar: 3em;
+}
+
 html, body {
     min-height: 100%;
 }
@@ -8,16 +18,16 @@ html *
 {
    font-size: 1em;
    font-family: 'Sora', sans-serif;
-   color:rgb(255, 238, 0);
+   color: var(--color-main);
 }
 
 .first {
-    padding-top: 3em;
+    padding-top: var(--h-navbar);
 }
 
 body {
     
-    background: #1d4350;
+    background: var(--color-bg);
     padding: 0;
     margin: 0;
 }
@@ -46,15 +56,15 @@ p.long {
 }
 
 .nav {
-    background-color: rgb(255, 238, 0);
+    background-color: var(--color-main);
     overflow: clip;
     padding: 0;
     margin: 0;
     width: 100%;
     position: fixed;
     top: 0px;
-    max-height: 3em;
-    border-bottom: thin solid #363636;
+    max-height: var(--h-navbar);
+    border-bottom: thin solid var(--color-bg-sec);
 }
   
 .nav a {
@@ -68,13 +78,13 @@ p.long {
 }
 
 .nav a:hover {
-    background-color: rgb(219, 205, 0);
-    color: black;
+    background-color: var(--color-main-dimmed);
+    color: var(--color-text-sec);
 }
 
 .nav a.active {
-    background-color: black;
-    color: rgb(255, 251, 0);
+    background-color: var(--color-text-sec);
+    color: var(--color-main);
 }
 
 #table {
@@ -96,10 +106,10 @@ p.long {
 }
 
 #sub {
-    background-color: rgb(255, 238, 0);
-    color: black;
+    background-color: var(--color-main);
+    color: var(--color-text-sec);
     margin: 2em;
-    border: thin solid black;
+    border: thin solid var(--color-text-sec);
     border-radius: 5pt;
     width: 100%;
     height: 24pt;
@@ -108,7 +118,7 @@ p.long {
 }
 
 #x, #y, #html-in, #cls {
-    background-color: #255869;
+    background-color: var(--color-input-bg);
 }
 
 .app_container {
@@ -121,12 +131,15 @@ p.long {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: stretch;
-    width: 75%;
+    width: fit-content;
+    max-width: 80%;
+    min-width: 50%;
     margin: auto;
-    border: thin solid rgb(255, 238, 0);
+    border: thin solid var(--color-main);
     border-radius: 15pt;
+    padding: 15pt;
 }
 
-.form * {
-    padding: 15pt;
+.form input, .form textarea {
+    margin: auto;
 }
