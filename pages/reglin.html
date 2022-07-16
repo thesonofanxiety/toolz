@@ -28,36 +28,42 @@
             </div>
         </div>
     </nav>
-    <div id="main_content" class="row g-3">
-        <h1> Kalkulator regresji. </h1>
-        <form onsubmit="return false" class="form">
-                <div>
-                    <label>Wartości x:</label><br>
-                    <textarea id="x" cols="40" rows="5"></textarea>
-                </div>
-                <div>
-                    <label>Wartości y:</label><br>
-                    <textarea id="y" cols="40" rows="5"></textarea>
-                </div>
-                <input pys-onClick="sub" type="submit" id="sub" value="submit"></br>
-        </form>
-        <div id="wyniki" class="inv">
-            <p>Dane x:</p>
-            <p id="dane_x"></p>
-            <p>Dane y:</p>
-            <p id="dane_y"></p>
-            <p>y = a*x+b</p>
-            <p id="a"></p>
-            <p id="b"></p>
-            <p id="se"></p>
-            <p id="sa2"></p>
-            <p id="sb2"></p>
-            <p id="sa"></p>
-            <p id="sb"></p>
-            <p id="ua"></p>
-            <p id="ub"></p>
-            <p>Wykres:</p>
-            <div id="Wykres"></div>
+    <div id="main_content" class="container">
+        <div class="row p-3">
+            <h1> Kalkulator regresji. </h1>
+        </div>
+        <div class="row p-3">
+            <form onsubmit="return false" class="col-sm-6">
+                    <div class="row p-3">
+                        <div class="col-sm-6">
+                            <label>Wartości x:</label><br>
+                            <textarea id="x" cols="30" rows="5"></textarea>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>Wartości y:</label><br>
+                            <textarea id="y" cols="30" rows="5"></textarea>
+                        </div>
+                        <input pys-onClick="sub" class="btn" type="submit" id="sub" value="submit"></br>
+                    </div>
+            </form>
+            <div id="wyniki" class="inv col-sm-6">
+                <p>Dane x:</p>
+                <p id="dane_x"></p>
+                <p>Dane y:</p>
+                <p id="dane_y"></p>
+                <p>y = a*x+b</p>
+                <p id="a"></p>
+                <p id="b"></p>
+                <p id="se"></p>
+                <p id="sa2"></p>
+                <p id="sb2"></p>
+                <p id="sa"></p>
+                <p id="sb"></p>
+                <p id="ua"></p>
+                <p id="ub"></p>
+                <p>Wykres:</p>
+                <div id="Wykres"></div>
+            </div>
         </div>
     </div>
     <py-script>

@@ -30,15 +30,21 @@
 			</div>
 		</nav>
         <div id="main_content">
-            <div class="row g-3">
-                <div class="app_container">
-                    <form onsubmit="return false" class="container">
-                        <input type="text" id="cls" placeholder="class name">
-                        <textarea id="html-in" cols="40" rows="5" placeholder="paste html here"></textarea>
-                        <input pys-onClick="sub" type="submit" id="sub" value="submit">
-                    </form><br>
-                    <div>
-                        <p id="output"></p>
+            <div class="container">
+                <div class="row p-3">
+                    <div class="col-sm-6">
+                        <form onsubmit="return false" class="row p-3">
+                            <div class="col-sm-6">
+                                <input type="text" id="cls" placeholder="class name">
+                            </div>
+                            <div class="col-sm-6">
+                                <textarea id="html-in" cols="40" rows="5" placeholder="paste html here"></textarea>
+                            </div>
+                            <input pys-onClick="sub" type="submit" id="sub" value="Submit" class="btn">
+                        </form><br>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="long" id="output"></p>
                     </div>
                 </div>
             </div>
@@ -53,6 +59,7 @@
                 out = []
                 for el in lss:
                     out.append(el.text)
+                print(out)
                 pyscript.write("output",";".join(out))
         </py-script>
         <py-env>

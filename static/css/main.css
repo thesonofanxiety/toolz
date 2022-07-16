@@ -6,6 +6,7 @@
     --color-main-dimmed: rgb(219, 205, 0);
     --color-bg-sec: #363636;
     --color-text-sec: black;
+    --color-text-sec-dimmed: rgb(31, 31, 31);
     --color-input-bg: #255869;
     --h-navbar: 3em;
 }
@@ -86,36 +87,16 @@ nav a {
 #sub {
     background-color: var(--color-main);
     color: var(--color-text-sec);
-    margin: 2em;
-    border: thin solid var(--color-text-sec);
-    border-radius: 5pt;
-    width: 100%;
-    height: 24pt;
-    text-align: center;
-    line-height: 3pt;
+    border: thin solid black;
+}
+
+#sub:hover {
+    background-color: var(--color-main-dimmed);
+    color: var(--color-text-sec-dimmed);
 }
 
 #x, #y, #html-in, #cls {
     background-color: var(--color-input-bg);
-}
-
-.app_container {
-    margin: 10pt;
-}
-
-.form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
-    width: fit-content;
-    max-width: 80%;
-    min-width: 50%;
-    margin: auto;
-    border: thin solid var(--color-main);
-    border-radius: 15pt;
-    padding: 15pt;
 }
 
 .form input, .form textarea {
