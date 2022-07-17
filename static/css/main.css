@@ -2,6 +2,7 @@
 
 :root {
     --color-bg: #1d4350;
+    --color-bg-dimmed: #17353f;
     --color-main: rgb(255, 238, 0);
     --color-main-dimmed: rgb(219, 205, 0);
     --color-bg-sec: #363636;
@@ -11,41 +12,13 @@
     --h-navbar: 3em;
 }
 
-html, body {
-    min-height: 100%;
-}
-
-html *
-{
-   font-size: 1em;
+html * {
    font-family: 'Sora', sans-serif;
    color: var(--color-main);
 }
 
-.first {
-    padding-top: var(--h-navbar);
-}
-
 body {
-    
     background: var(--color-bg);
-    padding: 0;
-    margin: 0;
-}
-
-input, textarea {
-    padding: 5pt;
-    margin: 10pt;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin: 1em;
-}
-
-h2 {
-    font-weight: bold;
-    font-variant: small-caps;
-    font-size: 2em;
 }
 
 p.long {
@@ -54,34 +27,19 @@ p.long {
 
 nav {
     background-color: var(--color-main);
-    border-bottom: thin solid var(--color-bg-sec);
 }
- 
-nav * {
-    color: #1f1f1f;
-}
- 
+
 nav a {
-    color: #1f1f1f;
+    color: var(--color-text-sec);
     font-family: 'Lobster', cursive; 
 }
 
-#table {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(auto, 1fr));
-    gap: 1rem;
+textarea {
+    height:100%
 }
 
-.inv {
-    visibility: hidden;
-    position: absolute;
-    top: -9999px;
-}
-
-.inv * {
-    visibility: hidden;
-    position: absolute;
-    top: -9999px;
+#tab li a:hover {
+    color: var(--color-main-dimmed);
 }
 
 #sub {
@@ -95,18 +53,21 @@ nav a {
     color: var(--color-text-sec-dimmed);
 }
 
-#x, #y, #html-in, #cls {
-    background-color: var(--color-input-bg);
+#list * {
+    background-color: var(--color-bg);
 }
 
-.form input, .form textarea {
-    margin: auto;
+
+.inv {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: -9999px;
 }
 
-.navbar-inverse .navbar-toggler-icon{
-    padding: 30pt !important;
-}
-
-li a:hover {
-    color: var(--color-main-dimmed);
+.inv * {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: -9999px;
 }

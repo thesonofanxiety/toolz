@@ -29,23 +29,27 @@
 				</div>
 			</div>
 		</nav>
-        <div id="main_content">
-            <div class="container">
-                <div class="row p-3">
-                    <div class="col-sm-6">
-                        <form onsubmit="return false" class="row p-3">
-                            <div class="col-sm-6">
-                                <input type="text" id="cls" placeholder="class name">
-                            </div>
-                            <div class="col-sm-6">
-                                <textarea id="html-in" cols="35" rows="5" placeholder="paste html here"></textarea>
-                            </div>
-                            <input pys-onClick="sub" type="submit" id="sub" value="Submit" class="btn">
-                        </form><br>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="long" id="output"></p>
-                    </div>
+
+        <div class="container" id="main-content">
+            <div class="row p-3" id="heading">
+				<h1>Ekstraktor tekstu z html (nazwa klasy)</h1>
+			</div>
+            <div class="row g-3" id="app">
+                <div class="col-sm-6" id="app-form">
+                    <form onsubmit="return false" class="row g-3">
+                        <div class="col-12">
+                            <input type="text" class="form-control" id="input-class" placeholder="Nazwa klasy">
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control" placeholder="Wklej swój html tutaj" id="input-html"></textarea>                       
+                        </div>
+                        <div class="col-12 d-grid">
+                            <input pys-onClick="sub" type="submit" id="sub" value="Ekstraktuj" class="btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6" id="output">
+                    <p class="long" id="output-text"></p>
                 </div>
             </div>
         </div>
@@ -54,16 +58,18 @@
             from bs4 import BeautifulSoup
 
             def sub(*args, **kwargs):
-                soup = BeautifulSoup(Element("html-in").value)
-                lss = soup.find_all("div", class_= Element("cls").value)
+                soup = BeautifulSoup(Element("input-html").value)
+                cls = str(Element("input-class").value)
+                lss = soup.select("."+cls)
                 out = []
                 for el in lss:
                     out.append(el.text)
-                print(out)
-                pyscript.write("output",";".join(out))
+                pyscript.write('output-text', ";".join(out))
+
         </py-script>
         <py-env>
             - beautifulsoup4
         </py-env>
+
     </body>
 </html>
