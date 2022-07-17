@@ -60,14 +60,8 @@ textarea {
 
 .inv {
     visibility: hidden;
-    position: absolute;
-    left: 0;
-    top: -9999px;
 }
 
 .inv * {
     visibility: hidden;
-    position: absolute;
-    left: 0;
-    top: -9999px;
 }
